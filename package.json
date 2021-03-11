@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "firebase": "file:../../../usr/lib/node_modules/firebase",
-    "firebase-tools": "^8.14.1",
-    "yarn": "^1.22.10"
-  }
-}
