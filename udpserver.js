@@ -11,6 +11,22 @@ setInterval(() => {
     server_UDP.send(`get`, 8888, '255.255.255.255');
 }, 10000);
 
+setInterval(() => {
+    let now = Date.now();
+    let isNeedUpdate = false;
+    for (let device in ListDevices) {
+        if (now - 21000 > device.updateTime) {
+            device.status = 'OFF';
+            isNeedUpdate = true;
+        }
+    }
+
+    if (isNeedUpdate) {
+        db_updateDevice(device);
+    }
+
+}, 10000);
+
 //--------------------------------------------------------------------------//
 
 let ListDevices = [];
@@ -73,10 +89,11 @@ function parse8266UpdateMessage(message, ip) {
         let status = parseInt(spt[2]) ? 'ON' : 'OFF';
 
         let isNeedUpdate = false;
+        let updateTime = Date.now();
         let device = findDeviceById(id);
         if (!device) {
             isNeedUpdate = true;
-            device = { id, status, ip };
+            device = { id, status, ip, updateTime };
             ListDevices.push(device);
         } else {
             if (device.status != status) {
