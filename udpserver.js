@@ -45,6 +45,13 @@ firebaseService.listen('command', command => {
     if (command.type === 'turnon' || command.type === 'turnoff') {
         request8266(command.id, command.type === 'turnon' ? 1 : 0);
     }
+
+    if (command.type === 'turnon_all' || command.type === 'turnoff_all') {
+        let status = command.type === 'turnon_all' ? 1 : 0;
+        for (let d of ListDevices) {
+            request8266(d.id, status);
+        }
+    }
 });
 
 function db_updateDevice() {
