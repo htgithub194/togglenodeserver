@@ -1,0 +1,22 @@
+{
+  "name": "togglenodeserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "firebaseService.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htgithub194/togglenodeserver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htgithub194/togglenodeserver/issues"
+  },
+  "homepage": "https://github.com/htgithub194/togglenodeserver#readme",
+  "dependencies": {
+    "firebase": "^8.3.1"
+  }
+}
